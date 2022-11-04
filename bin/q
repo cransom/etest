@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+rm -f app
+nix build .#nixosConfigurations.app.config.system.build.vm -o app
+./app/bin/run-*-vm -nographic -display curses -no-reboot
